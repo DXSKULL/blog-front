@@ -20,9 +20,7 @@ export const Registration = () => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
-    defaultValues: {
-      
-    },
+    defaultValues: {},
   });
 
   async function onSubmit(values) {
@@ -37,12 +35,10 @@ export const Registration = () => {
     }
   }
 
-  async function name(params) {}
-
   if (isAuth) {
     navigate("/");
   }
-
+  console.log(isValid);
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
@@ -86,7 +82,7 @@ export const Registration = () => {
           fullWidth
         />
         <Button
-          disabled={!isValid}
+          // disabled={!isValid}
           type="submit"
           size="large"
           variant="contained"
