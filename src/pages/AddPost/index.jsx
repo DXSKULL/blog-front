@@ -137,7 +137,7 @@ export const AddPost = () => {
           </Button>
           <img
             className={styles.image}
-            src={`https://blog-back-cwqd.onrender.com${imageUrl}`}
+            src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
             alt="Uploaded"
           />
         </>

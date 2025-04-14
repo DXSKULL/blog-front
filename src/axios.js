@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const axiosInstance = axios.create({
-    baseURL: "https://blog-back-cwqd.onrender.com"
+    baseURL: process.env.REACT_APP_API_URL
 })
 
 axiosInstance.interceptors.request.use((config) => {

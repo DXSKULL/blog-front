@@ -41,7 +41,7 @@ export const Home = () => {
                 title={post.title}
                 imageUrl={
                   post.imageUrl
-                    ? `https://blog-back-cwqd.onrender.com${post.imageUrl}`
+                    ? `${process.env.REACT_APP_API_URL}${post.imageUrl}`
                     : ""
                 }
                 user={{

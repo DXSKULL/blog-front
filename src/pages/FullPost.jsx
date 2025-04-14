@@ -38,7 +38,7 @@ export const FullPost = () => {
           title={postData.title}
           imageUrl={
             postData.imageUrl
-              ? `https://blog-back-cwqd.onrender.com${postData.imageUrl}`
+              ? `${process.env.REACT_APP_API_URL}${postData.imageUrl}`
               : ""
           }
           user={postData.user}
