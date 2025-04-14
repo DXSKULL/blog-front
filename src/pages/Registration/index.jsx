@@ -8,7 +8,11 @@ import Avatar from "@mui/material/Avatar";
 import styles from "./Login.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchRegister, selectIsAuth } from "../../redux/slices/auth";
+import {
+  fetchRegister,
+  selectIsAuth,
+  fetchAuthMe,
+} from "../../redux/slices/auth";
 import { useForm } from "react-hook-form";
 
 export const Registration = () => {
@@ -25,7 +29,7 @@ export const Registration = () => {
       email: "user@gmail.com",
       password: "123456",
     },
-    mode: 'onChange',
+    mode: "onChange",
   });
 
   async function onSubmit(values) {
@@ -37,6 +41,7 @@ export const Registration = () => {
 
     if ("token" in data.payload) {
       localStorage.setItem("token", data.payload.token);
+      await dispatch(fetchAuthMe());
     }
   }
 

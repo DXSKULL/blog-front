@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./Login.module.scss";
-import { fetchUserData, selectIsAuth } from "../../redux/slices/auth";
+import { fetchUserData, selectIsAuth, fetchAuthMe } from "../../redux/slices/auth";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -35,6 +35,7 @@ export const Login = () => {
 
     if ("token" in data.payload) {
       localStorage.setItem("token", data.payload.token)
+      await dispatch(fetchAuthMe());
     }
   }
   
