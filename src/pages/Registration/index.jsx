@@ -19,9 +19,7 @@ export const Registration = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm({
-    defaultValues: {},
-  });
+  } = useForm();
 
   async function onSubmit(values) {
     const data = await dispatch(fetchRegister(values));
