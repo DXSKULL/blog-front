@@ -33,6 +33,7 @@ export const Registration = () => {
     if ("token" in data.payload) {
       localStorage.setItem("token", data.payload.token);
     }
+    console.log(values)
   }
 
   if (isAuth) {
