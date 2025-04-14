@@ -21,10 +21,11 @@ export const Registration = () => {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      fullName: "Negan",
-      email: "lolka@gmail.com",
+      fullName: "User",
+      email: "user@gmail.com",
       password: "123456",
     },
+    mode: 'onChange',
   });
 
   async function onSubmit(values) {
@@ -38,8 +39,6 @@ export const Registration = () => {
       localStorage.setItem("token", data.payload.token);
     }
   }
-
-  async function name(params) {}
 
   if (isAuth) {
     navigate("/");

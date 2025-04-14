@@ -23,6 +23,7 @@ export const Login = () => {
       email: "lolka@gmail.com",
       password: "123456",
     },
+    mode: 'onChange',
   });
 
   async function onSubmit(values) {
