@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown"
-import { Post } from "../components/Post";
-import { Index } from "../components/AddComment";
-import { CommentsBlock } from "../components/CommentsBlock";
+import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../axios";
+import { Post } from "../components/Post";
 
 export const FullPost = () => {
   const [postData, setPostData] = useState({});
@@ -38,39 +36,20 @@ export const FullPost = () => {
         <Post
           id={postData.id}
           title={postData.title}
-          imageUrl={`http://localhost:4444${postData.imageUrl}`}
+          imageUrl={
+            postData.imageUrl
+              ? `https://blog-back-cwqd.onrender.com${postData.imageUrl}`
+              : ""
+          }
           user={postData.user}
           createdAt={postData.createdAt}
           viewsCount={postData.viewsCount}
-          commentsCount={3}
           tags={postData.tags}
           isFullPost
         >
-          <ReactMarkdown children={postData.text}  />
+          <ReactMarkdown children={postData.text} />
         </Post>
       )}
-
-      <CommentsBlock
-        items={[
-          {
-            user: {
-              fullName: "Вася Пупкин",
-              avatarUrl: "https://mui.com/static/images/avatar/1.jpg",
-            },
-            text: "Это тестовый комментарий 555555",
-          },
-          {
-            user: {
-              fullName: "Иван Иванов",
-              avatarUrl: "https://mui.com/static/images/avatar/2.jpg",
-            },
-            text: "When displaying three lines or more, the avatar is not aligned at the top. You should set the prop to align the avatar at the top",
-          },
-        ]}
-        isLoading={false}
-      >
-        <Index />
-      </CommentsBlock>
     </>
   );
 };
