@@ -19,7 +19,13 @@ export const Registration = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      fullName: "Negan",
+      email: "lolka@gmail.com",
+      password: "123456",
+    },
+  });
 
   async function onSubmit(values) {
     const data = await dispatch(fetchRegister(values));
@@ -31,13 +37,14 @@ export const Registration = () => {
     if ("token" in data.payload) {
       localStorage.setItem("token", data.payload.token);
     }
-    console.log(values)
   }
+
+  async function name(params) {}
 
   if (isAuth) {
     navigate("/");
   }
-  console.log(isValid);
+
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
@@ -81,7 +88,7 @@ export const Registration = () => {
           fullWidth
         />
         <Button
-          // disabled={!isValid}
+          disabled={!isValid}
           type="submit"
           size="large"
           variant="contained"
